@@ -1,0 +1,16 @@
+﻿# STAGE01 - Build application and its dependencies  
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env  
+WORKDIR /app  
+COPY WebApp/*.csproj ./  
+COPY . ./  
+RUN dotnet restore   
+  
+# STAGE02 - Publish the application  
+FROM build-env AS publish  
+RUN dotnet publish -c Release -o /app  
+  
+# STAGE03 - Create the final image  
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 
+WORKDIR /app  
+COPY --from=publish /app .  
+ENTRYPOINT ["dotnet", "Login.dll"] 
