@@ -1,0 +1,7 @@
+Dr I had an error I could not update-database 
+
+Error Number:547,State:0,Class:16
+
+So I did not take screeshots or recorded a video
+
+Please check the code I wasted time to try fixing the error but than I stopped because I did not have enough time
